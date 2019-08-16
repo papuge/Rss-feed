@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MyInstapaper</string>
+    <string name="version_name">Version is %s</string>
+    <string name="imei_number">IMEI - %s</string>
+    <string name="imei_explaination">This permission is needed to show IMEI</string>
+    <string name="imei_permission_denied">Imei feature is unavailable</string>
+    <string name="ok">OK</string>
 </resources>
