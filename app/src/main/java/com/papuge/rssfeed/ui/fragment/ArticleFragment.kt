@@ -1,4 +1,4 @@
-package com.papuge.rssfeed.ui
+package com.papuge.rssfeed.ui.fragment
 
 
 import android.os.Bundle

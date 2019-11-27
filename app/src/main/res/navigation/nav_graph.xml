@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/feedFragment"
-        android:name="com.papuge.rssfeed.ui.FeedFragment"
+        android:name="com.papuge.rssfeed.ui.fragment.FeedFragment"
         android:label="fragment_feed"
         tools:layout="@layout/fragment_feed" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/articleFragment"
-        android:name="com.papuge.rssfeed.ui.ArticleFragment"
+        android:name="com.papuge.rssfeed.ui.fragment.ArticleFragment"
         android:label="fragment_article"
         tools:layout="@layout/fragment_article" >
         <argument
