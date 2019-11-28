@@ -19,7 +19,7 @@ class ConnectionReceiver : BroadcastReceiver() {
             Toast.makeText(context, "Internet is connected", Toast.LENGTH_LONG).show()
         }
         else if(!isConnected) {
-            Toast.makeText(context, "Disconnected internet", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "Disconnected network", Toast.LENGTH_LONG).show()
             wasDisconnected = true
         }
     }

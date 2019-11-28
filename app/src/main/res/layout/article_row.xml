@@ -19,17 +19,19 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
             app:layout_constraintEnd_toStartOf="@+id/article_image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/pubDate"
+            android:id="@+id/article_pub_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
+            android:lines="1"
             android:textColor="@color/colorDarkText"
             app:layout_constraintEnd_toStartOf="@+id/article_image"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,18 +51,19 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <TextView
-            android:id="@+id/description"
+            android:id="@+id/article_description"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            android:maxLines="3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/article_image"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pubDate"
+            app:layout_constraintTop_toBottomOf="@+id/article_pub_date"
             app:layout_constraintVertical_bias="0.0"
             app:layout_goneMarginEnd="16dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>

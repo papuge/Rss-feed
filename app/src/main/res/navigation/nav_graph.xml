@@ -21,6 +21,6 @@
         tools:layout="@layout/fragment_article" >
         <argument
             android:name="article"
-            app:argType="com.papuge.rssfeed.data.Article" />
+            app:argType="com.papuge.rssfeed.data.ArticleEntity" />
     </fragment>
 </navigation>
