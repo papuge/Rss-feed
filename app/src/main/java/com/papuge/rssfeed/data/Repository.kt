@@ -18,7 +18,7 @@ class Repository {
         return withContext(Dispatchers.IO) {
             val parser = Parser()
             val list: List<Article> = parser.getArticles(url)
-            list.take(pageCount).map { article ->
+            list.map { article ->
                 ArticleEntity(
                     title = article.title ?: "",
                     pubDate = article.pubDate ?: "",
