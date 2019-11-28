@@ -82,7 +82,15 @@ class FeedAdapter(
                 e.printStackTrace()
                 article.pubDate
             }
-            descriptionTV.text = article.description
+            val indxOfPreview = article.content.indexOf("<p>")
+            if (indxOfPreview != -1) {
+                val re = Regex("<[\\w\\s\"#=/]*>*")
+                var answer = article.content.substring(indxOfPreview, indxOfPreview + 52) + "..."
+                answer = re.replace(answer, "")
+                descriptionTV.text = answer
+            } else {
+                descriptionTV.text = article.description
+            }
             if (article.mainImage.isNullOrEmpty()) {
                 imageView.visibility = GONE
             } else {

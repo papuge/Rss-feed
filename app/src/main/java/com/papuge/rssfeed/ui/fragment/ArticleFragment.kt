@@ -3,6 +3,7 @@ package com.papuge.rssfeed.ui.fragment
 
 import android.os.Bundle
 import android.util.Base64
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ class ArticleFragment : Fragment() {
 
     private val args: ArticleFragmentArgs by navArgs()
     private lateinit var webView: WebView
+    private val TAG = "ArticleFragment"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +39,7 @@ class ArticleFragment : Fragment() {
         webView.loadDataWithBaseURL(null, "<style>img{display: inline; height: auto; max-width: 100%;} " +
                 "</style>\n" + "<style>iframe{ height: auto; width: auto;}" + "</style>\n"
                 + args?.article.content, null, "utf-8", null)
+        Log.d(TAG, "${args?.article.content}")
 
     }
 
