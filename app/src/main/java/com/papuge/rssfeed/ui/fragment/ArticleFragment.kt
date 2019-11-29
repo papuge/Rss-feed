@@ -38,9 +38,7 @@ class ArticleFragment : Fragment() {
         webView.webChromeClient = WebChromeClient()
         webView.loadDataWithBaseURL(null, "<style>img{display: inline; height: auto; max-width: 100%;} " +
                 "</style>\n" + "<style>iframe{ height: auto; width: auto;}" + "</style>\n"
-                + args?.article.content, null, "utf-8", null)
-        Log.d(TAG, "${args?.article.content}")
-
+                + args.article.content, null, "utf-8", null)
     }
 
 

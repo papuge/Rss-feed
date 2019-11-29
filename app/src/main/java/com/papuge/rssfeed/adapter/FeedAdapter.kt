@@ -38,12 +38,12 @@ class FeedAdapter(
 
     fun setArticles(someArticles: List<ArticleEntity>) {
         articles.clear()
-        this.articles.plusAssign(someArticles)
+        articles.plusAssign(someArticles)
         notifyDataSetChanged()
     }
 
-    fun addArticles(someArticles: List<ArticleEntity>) {
-        this.articles.plusAssign(someArticles)
+    fun clearArticles() {
+        articles.clear()
         notifyDataSetChanged()
     }
 
@@ -82,16 +82,16 @@ class FeedAdapter(
                 e.printStackTrace()
                 article.pubDate
             }
-            val indxOfPreview = article.content.indexOf("<p>")
-            if (indxOfPreview != -1) {
-                val re = Regex("<[\\w\\s\"#=/]*>*")
-                var answer = article.content.substring(indxOfPreview, indxOfPreview + 52) + "..."
+            val indexOfPreview = article.content.indexOf("<p>")
+            if (indexOfPreview != -1) {
+                val re = Regex("""<[^>]+>*""")
+                var answer = article.content.substring(indexOfPreview, indexOfPreview + 100) + "..."
                 answer = re.replace(answer, "")
                 descriptionTV.text = answer
             } else {
                 descriptionTV.text = article.description
             }
-            if (article.mainImage.isNullOrEmpty()) {
+            if (article.mainImage.isEmpty()) {
                 imageView.visibility = GONE
             } else {
                 imageView.load(article.mainImage)

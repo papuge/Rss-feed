@@ -2,7 +2,6 @@ package com.papuge.rssfeed.data
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
-import android.content.SharedPreferences
 import android.util.Log
 import com.prof.rssparser.Article
 import com.prof.rssparser.Parser
@@ -13,17 +12,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class Repository {
-
-    private val pageCount: Int = 10
-    var defaultUrl = "https://medium.com/feed/the-story"
+    var url = "https://www.androidauthority.com/feed"
 
     private val TAG = "Repository"
 
     suspend fun fetchFeed(): List<ArticleEntity> {
-        Log.d(TAG, "Start fetching")
+        Log.d(TAG, "Start fetching from $url")
         return withContext(Dispatchers.IO) {
             val parser = Parser()
-            val list: List<Article> = parser.getArticles(defaultUrl)
+            val list: List<Article> = parser.getArticles(url)
             list.map { article ->
                 ArticleEntity(
                     title = article.title ?: "",
@@ -47,6 +44,7 @@ class Repository {
 
         val editor = sharedPrefs.edit()
         editor.putString(CACHE_DATA_KEY, jsonData)
+        editor.putString(URL_KEY, url)
         editor.apply()
     }
 
@@ -68,8 +66,15 @@ class Repository {
         return listOf()
     }
 
+    fun restoreUrl(appContext: Context) {
+        val sharedPrefs = appContext.getSharedPreferences(PREF_NAME, MODE_PRIVATE)
+        val restoredUrl = sharedPrefs.getString(URL_KEY, "https://www.androidauthority.com/feed")
+        url = requireNotNull(restoredUrl)
+    }
+
     companion object {
         private const val CACHE_DATA_KEY = "CACHE_DATA"
+        private const val URL_KEY = "URL_KEY"
         private const val PREF_NAME = "CachedData"
     }
 
