@@ -20,15 +20,19 @@ class Repository {
         Log.d(TAG, "Start fetching from $url")
         return withContext(Dispatchers.IO) {
             val parser = Parser()
-            val list: List<Article> = parser.getArticles(url)
-            list.map { article ->
-                ArticleEntity(
-                    title = article.title ?: "",
-                    pubDate = article.pubDate ?: "",
-                    description = article.description ?: "",
-                    mainImage = article.image ?: "",
-                    content = article.content ?: ""
-                )
+            try {
+                val list: List<Article> = parser.getArticles(url)
+                list.map { article ->
+                    ArticleEntity(
+                        title = article.title ?: "",
+                        pubDate = article.pubDate ?: "",
+                        description = article.description ?: "",
+                        mainImage = article.image ?: "",
+                        content = article.content ?: ""
+                    )
+                }
+            } catch (ex: Exception) {
+                listOf<ArticleEntity>()
             }
         }
     }

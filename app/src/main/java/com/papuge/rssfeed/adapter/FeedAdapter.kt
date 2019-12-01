@@ -85,7 +85,7 @@ class FeedAdapter(
             val indexOfPreview = article.content.indexOf("<p>")
             if (indexOfPreview != -1) {
                 val re = Regex("""<[^>]+>*""")
-                var answer = article.content.substring(indexOfPreview, indexOfPreview + 100) + "..."
+                var answer = article.content.substring(indexOfPreview, indexOfPreview + 100)
                 answer = re.replace(answer, "")
                 descriptionTV.text = answer
             } else {
